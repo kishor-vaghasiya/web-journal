@@ -1,0 +1,24 @@
+<!-- 6) Create a web-page to read Employee JSON object(Emp.json) using AJAX.
+(Combined AJAX, JSON and jQuery) -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Load Employee JSON</title>
+    <script>
+        function loadEmployee() {
+            fetch("emp.json").then(response => response.json())
+            .then(data => {
+                document.getElementById("content").innerHTML = `
+                    <p>ID: ${data.Empid}</p>
+                    <p>Name: ${data.Name}</p>
+                    <p>Salary: ${data.Salary}</p>`;
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="loadEmployee()">Load Employee Info</button>
+    <div id="content"></div>
+</body>
+</html>

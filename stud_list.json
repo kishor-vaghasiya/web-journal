@@ -1,0 +1,20 @@
+{
+    "1": {
+        "name": "Rahil",
+        "city": "Surat",
+        "contact": 8942382352,
+        "email": "rahil@yahoo.co.in"
+    },
+    "2": {
+        "name": "Dhaval",
+        "city": "Baroda",
+        "contact": 6587451234,
+        "email": "dhval412@hotmail.com"
+    },
+    "3": {
+        "name": "Aaman",
+        "city": "Mumbai",
+        "contact": 7854121245,
+        "email": "aman123@gmail.com"
+    }
+}

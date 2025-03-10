@@ -1,0 +1,24 @@
+<!-- 5) Create a web-page to read stud.json file and call it using
+AJAX technology. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Load Student JSON</title>
+    <script>
+        function loadJSON() {
+            fetch("stud.json").then(response => response.json())
+            .then(data => {
+                document.getElementById("content").innerHTML = `
+                    <p>Name: ${data.name}</p>
+                    <p>Class: ${data.class}</p>
+                    <p>Email: ${data.email}</p>`;
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="loadJSON()">Load Student Info</button>
+    <div id="content"></div>
+</body>
+</html>

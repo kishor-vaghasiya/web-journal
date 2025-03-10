@@ -1,0 +1,25 @@
+<!-- 1) Create a webpage that accepts essay title and content of the essay. Provide hint to the
+user regarding how many characters remain at the time of typing title as well as
+content. -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Essay Input</title>
+    <script>
+        function updateCount(id, max) {
+            let remaining = max - document.getElementById(id).value.length;
+            document.getElementById(id + "Count").innerText = remaining + " characters remaining";
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Essay Input</h2>
+    <input type="text" id="title" maxlength="100" oninput="updateCount('title', 100)">
+    <p id="titleCount">100 characters remaining</p>
+    <textarea id="content" maxlength="1000" oninput="updateCount('content', 1000)"></textarea>
+    <p id="contentCount">1000 characters remaining</p>
+</body>
+
+</html>

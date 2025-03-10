@@ -1,0 +1,82 @@
+<!-- 4) Create a web-page to read Catlog.xml file and read it using ajax  -->
+<!-- use this server http://localhost:8000/4-read-xmlfile.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read XML using AJAX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>CD Catalog</h2>
+    <button onclick="loadXML()">Load Catalog</button>
+    <table id="cdTable">
+        <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Country</th>
+            <th>Company</th>
+            <th>Price</th>
+            <th>Year</th>
+        </tr>
+    </table>
+
+    <script>
+        function loadXML() {
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    displayXML(this);
+                }
+            };
+            xhttp.open("GET", "catlog.xml", true);
+            xhttp.send();
+        }
+
+        function displayXML(xml) {
+            let xmlDoc = xml.responseXML;
+            let table = document.getElementById("cdTable");
+            let cds = xmlDoc.getElementsByTagName("CD");
+
+            for (let i = 0; i < cds.length; i++) {
+                let row = table.insertRow(-1);
+                row.insertCell(0).innerText = cds[i].getElementsByTagName("TITLE")[0].textContent;
+                row.insertCell(1).innerText = cds[i].getElementsByTagName("ARTIST")[0].textContent;
+                row.insertCell(2).innerText = cds[i].getElementsByTagName("COUNTRY")[0].textContent;
+                row.insertCell(3).innerText = cds[i].getElementsByTagName("COMPANY")[0].textContent;
+                row.insertCell(4).innerText = cds[i].getElementsByTagName("PRICE")[0].textContent;
+                row.insertCell(5).innerText = cds[i].getElementsByTagName("YEAR")[0].textContent;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!-- 2) Create a webpage that accepts personal information of the user as shown below.
+User can also add a new language if it is not available in the list by clicking on Add
+Language link -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Personal Info</title>
+    <script>
+        function addLanguage() {
+            let newLang = prompt("Enter new language:");
+            if (newLang) {
+                let option = new Option(newLang, newLang);
+                document.getElementById("language").add(option);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Personal Information</h2>
+    <input type="text" id="name" placeholder="Name"><br>
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="tel" id="phone" placeholder="Phone"><br>
+    <select id="language">
+        <option>English</option>
+        <option>Spanish</option>
+    </select>
+    <button onclick="addLanguage()">Add Language</button>
+</body>
+
+</html>

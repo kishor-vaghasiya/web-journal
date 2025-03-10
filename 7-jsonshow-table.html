@@ -1,0 +1,59 @@
+7) Create a JSON file representing some students(stud_list.json). Read that file using
+AJAX and displays its content in HTML table on the ready event of the document
+using jQuery.
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student List</h2>
+    <table id="studentTable">
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Contact</th>
+            <th>Email</th>
+        </tr>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            $.getJSON("stud_list.json", function (data) {
+                let table = $("#studentTable");
+                $.each(data, function (key, student) {
+                    table.append(`<tr><td>${student.name}</td><td>${student.city}</td><td>${student.contact}</td><td>${student.email}</td></tr>`);
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
